@@ -67,6 +67,7 @@
       this.selectCharacterComboBox = new System.Windows.Forms.ComboBox();
       this.SaveButton = new System.Windows.Forms.Button();
       this.closeButton = new System.Windows.Forms.Button();
+      this.unlockButton = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.loreNumericUpDown)).BeginInit();
       this.currentGameGroupBox.SuspendLayout();
       this.characterInfoPanel.SuspendLayout();
@@ -554,12 +555,23 @@
       this.closeButton.UseVisualStyleBackColor = true;
       this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
       // 
+      // unlockButton
+      // 
+      this.unlockButton.Location = new System.Drawing.Point(164, 8);
+      this.unlockButton.Name = "unlockButton";
+      this.unlockButton.Size = new System.Drawing.Size(158, 23);
+      this.unlockButton.TabIndex = 5;
+      this.unlockButton.Text = "Enable Lore Store Options";
+      this.unlockButton.UseVisualStyleBackColor = true;
+      this.unlockButton.Click += new System.EventHandler(this.UnlockButton_Click);
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.Silver;
       this.ClientSize = new System.Drawing.Size(431, 557);
+      this.Controls.Add(this.unlockButton);
       this.Controls.Add(this.closeButton);
       this.Controls.Add(this.SaveButton);
       this.Controls.Add(this.currentGameGroupBox);
@@ -633,6 +645,7 @@
     private System.Windows.Forms.NumericUpDown luckNumericUpDown;
     private System.Windows.Forms.Label label14;
     private System.Windows.Forms.Button closeButton;
+    private System.Windows.Forms.Button unlockButton;
   }
 }
 

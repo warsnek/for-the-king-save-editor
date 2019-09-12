@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace ForTheKingSaveEdit
     private long _originalLorePoints;
     private long _lorePoints;
     private SaveGame _saveGame;
+
+    private Dictionary<string, long> _playerStatisticsToUpdate = new Dictionary<string, long>();
+    //private List<string> _achievementsToUnlock = new List<string>();
 
     public MainForm(string saveDirectoryPath)
     {
@@ -64,18 +68,45 @@ namespace ForTheKingSaveEdit
       return result;
     }
 
-    private void SaveLorePointsToDb()
+    private void SaveToPlayerDb()
     {
       using (var playerDbCon = CreatePlayerDbConnection())
       {
         playerDbCon.Open();
+        
+        if(_originalLorePoints != _lorePoints)
+        {
+          UpdatePlayerStatistic(playerDbCon, "STAT_LU_TOTAL_LORE", _lorePoints);
+        }
 
-        var command = new SQLiteCommand("UPDATE sPlayerStatistic SET Value = @loreValue WHERE Name = 'STAT_LU_TOTAL_LORE'", playerDbCon);
-        command.Parameters.AddWithValue("@loreValue", _lorePoints);
+        foreach(var playerStatistic in _playerStatisticsToUpdate)
+        {
+          UpdatePlayerStatistic(playerDbCon, playerStatistic.Key, playerStatistic.Value);
+        }
 
-        command.ExecuteNonQuery();
+        //foreach(var achievement in _achievementsToUnlock)
+        //{
+        //  UnlockAchievement(playerDbCon, achievement);
+        //}
+
         playerDbCon.Close();
       }
+
+      void UpdatePlayerStatistic(SQLiteConnection connection, string name, long value)
+      {
+        var command = new SQLiteCommand("UPDATE sPlayerStatistic SET Value = @value WHERE Name = @name", connection);
+        command.Parameters.AddWithValue("@name", name);
+        command.Parameters.AddWithValue("@value", value);        
+        command.ExecuteNonQuery();
+      }
+
+      //void UnlockAchievement(SQLiteConnection connection, string achievementName)
+      //{
+      //  var command = new SQLiteCommand("UPDATE sPlayerAchievement SET IsAchieved = 1 WHERE Name = @name", connection);
+      //  command.Parameters.AddWithValue("@name", achievementName);
+      //  command.ExecuteNonQuery();
+      //}
+
     }
 
     private void SelectCharacterComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,9 +227,9 @@ namespace ForTheKingSaveEdit
     {
       try
       {
-        if(_originalLorePoints != _lorePoints)
+        if(_originalLorePoints != _lorePoints || _playerStatisticsToUpdate.Count > 0)
         {
-          SaveLorePointsToDb();
+          SaveToPlayerDb();
         }
 
         if (_saveGame != null)
@@ -222,6 +253,98 @@ namespace ForTheKingSaveEdit
     private void LoreNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
       _lorePoints = Convert.ToInt64(loreNumericUpDown.Value);
+    }
+
+    private void UnlockButton_Click(object sender, EventArgs e)
+    {
+      var unlockOptions = new Dictionary<string, long>()
+      {
+        { "STAT_LU_SKINUNDEAD_REVEAL", 1 },
+        { "STAT_LU_SKINCAT_REVEAL", 1 },
+        { "STAT_LU_PIRATE_REVEAL", 1 },
+        { "STAT_LU_HELMETWINTER_REVEAL", 1 },
+        { "STAT_LU_HELMETTOPHAT_REVEAL", 1 },
+        { "STAT_LU_HELMETPUMPKIN_REVEAL", 1 },
+        { "STAT_LU_HELMETMOOSE_REVEAL", 1 },
+        { "STAT_LU_HELMETKS_REVEAL", 1 },
+        { "STAT_LU_HELMETEXPLORER_REVEAL", 1 },
+        { "STAT_LU_HELMETBUCKET_REVEAL", 1 },
+        { "STAT_LU_BACKPACKWARRIOR_REVEAL", 1 },
+        { "STAT_LU_BACKPACKQUIVER_REVEAL", 1 },
+        { "STAT_LU_BACKPACKPUMPKIN_REVEAL", 1 },
+        { "STAT_LU_BACKPACKMERCHANT_REVEAL", 1 },
+        { "STAT_LU_BACKPACKKS_REVEAL", 1 },
+        { "STAT_LU_BACKPACKBASKET_REVEAL", 1 },
+        { "STAT_LU_BACKPACKBARREL_REVEAL", 1 },
+        { "STAT_LU_ARMORPUMPKIN_REVEAL", 1 },
+        { "STAT_LU_HOBO_CHARITY", 1 },
+        { "STAT_LU_MONK_RESCUE", 1 },
+        { "STAT_LU_PROGRESS_ACTI", 1 },
+        { "STAT_LU_PROGRESS_ACTII", 1 },
+        { "STAT_LU_PROGRESS_ACTIII", 1 },
+        { "STAT_LU_PROGRESS_ACTIV", 1 },
+        { "STAT_DEATH_AT_SEA", 1 },
+        { "STAT_PRISMATIC_FISH", 1 },
+        { "STAT_SANCTUMS_DEVOTED", 8 },
+        { "STAT_SANCTUM01_DEVOTED", 8 },
+        { "STAT_SANCTUM02_DEVOTED", 8 },
+        { "STAT_SANCTUM03_DEVOTED", 8 },
+        { "STAT_SANCTUM04_DEVOTED", 8 },
+        { "STAT_SANCTUM05_DEVOTED", 8 },
+        { "STAT_SANCTUM06_DEVOTED", 8 },
+        { "STAT_SANCTUM07_DEVOTED", 8 },
+        { "STAT_SANCTUM08_DEVOTED", 8 },
+        { "STAT_SANCTUM09_DEVOTED", 8 },
+        { "STAT_LU_STONE_HERO_TRIBUTES", 50 },
+        { "STAT_PARTY_WIPES", 3 },
+        { "STAT_NIGHT_MARKET_PURCHASES", 1 },
+        { "STAT_CELLAR_LEVEL_DEPTH", 8 },
+        { "STAT_SHIPWRECKS", 1 },
+        { "STAT_BEATCULTISTCAMP", 1 }
+      };
+
+      try
+      {
+        using (var playerDbCon = CreatePlayerDbConnection())
+        {
+          playerDbCon.Open();
+
+          foreach (var unlockOption in unlockOptions)
+          {
+            if (GetValue(playerDbCon, unlockOption.Key) < unlockOption.Value)
+            {
+              _playerStatisticsToUpdate[unlockOption.Key] = unlockOption.Value;
+            }
+          }
+
+          //var command = new SQLiteCommand("SELECT Name FROM sPlayerAchievement WHERE IsAchieved = 0", playerDbCon);
+          //using (var reader = command.ExecuteReader())
+          //{
+          //  while (reader.Read())
+          //  {
+          //    _achievementsToUnlock.Add(reader.GetString(0));
+          //  }
+          //}
+
+          playerDbCon.Close();
+        }
+
+        MessageBox.Show(_playerStatisticsToUpdate.Count > 0 ? "Unlocked a bunch of new items!" : "No new items unlocked :(", "Unlock Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+      }
+      catch(Exception ex)
+      {
+        MessageBox.Show($"Unlock failed: {ex}", ":(", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+
+      long GetValue(SQLiteConnection connection, string name)
+      {
+        var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = @name", connection);
+        command.Parameters.AddWithValue("@name", name);
+
+        return (long)command.ExecuteScalar();
+      }
     }
   }
 }
