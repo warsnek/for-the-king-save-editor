@@ -171,7 +171,6 @@
       // 
       // maxHealthNumericUpDown
       // 
-      this.maxHealthNumericUpDown.DecimalPlaces = 1;
       this.maxHealthNumericUpDown.Location = new System.Drawing.Point(162, 373);
       this.maxHealthNumericUpDown.Maximum = new decimal(new int[] {
             1000,
@@ -199,13 +198,7 @@
       // 
       // maxFocusNumericUpDown
       // 
-      this.maxFocusNumericUpDown.DecimalPlaces = 1;
       this.maxFocusNumericUpDown.Location = new System.Drawing.Point(162, 347);
-      this.maxFocusNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.maxFocusNumericUpDown.Name = "maxFocusNumericUpDown";
       this.maxFocusNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.maxFocusNumericUpDown.TabIndex = 29;
@@ -222,13 +215,7 @@
       // 
       // luckNumericUpDown
       // 
-      this.luckNumericUpDown.DecimalPlaces = 1;
       this.luckNumericUpDown.Location = new System.Drawing.Point(162, 321);
-      this.luckNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.luckNumericUpDown.Name = "luckNumericUpDown";
       this.luckNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.luckNumericUpDown.TabIndex = 27;
@@ -245,13 +232,7 @@
       // 
       // talentNumericUpDown
       // 
-      this.talentNumericUpDown.DecimalPlaces = 1;
       this.talentNumericUpDown.Location = new System.Drawing.Point(162, 295);
-      this.talentNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.talentNumericUpDown.Name = "talentNumericUpDown";
       this.talentNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.talentNumericUpDown.TabIndex = 25;
@@ -268,13 +249,7 @@
       // 
       // vitalityNumericUpDown
       // 
-      this.vitalityNumericUpDown.DecimalPlaces = 1;
       this.vitalityNumericUpDown.Location = new System.Drawing.Point(162, 269);
-      this.vitalityNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.vitalityNumericUpDown.Name = "vitalityNumericUpDown";
       this.vitalityNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.vitalityNumericUpDown.TabIndex = 23;
@@ -291,13 +266,7 @@
       // 
       // quicknessNumericUpDown
       // 
-      this.quicknessNumericUpDown.DecimalPlaces = 1;
       this.quicknessNumericUpDown.Location = new System.Drawing.Point(162, 243);
-      this.quicknessNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.quicknessNumericUpDown.Name = "quicknessNumericUpDown";
       this.quicknessNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.quicknessNumericUpDown.TabIndex = 21;
@@ -314,13 +283,7 @@
       // 
       // fortitudeNumericUpDown
       // 
-      this.fortitudeNumericUpDown.DecimalPlaces = 1;
       this.fortitudeNumericUpDown.Location = new System.Drawing.Point(162, 217);
-      this.fortitudeNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.fortitudeNumericUpDown.Name = "fortitudeNumericUpDown";
       this.fortitudeNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.fortitudeNumericUpDown.TabIndex = 19;
@@ -337,13 +300,7 @@
       // 
       // awarenessNumericUpDown
       // 
-      this.awarenessNumericUpDown.DecimalPlaces = 1;
       this.awarenessNumericUpDown.Location = new System.Drawing.Point(162, 191);
-      this.awarenessNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.awarenessNumericUpDown.Name = "awarenessNumericUpDown";
       this.awarenessNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.awarenessNumericUpDown.TabIndex = 17;
@@ -360,13 +317,7 @@
       // 
       // toughnessNumericUpDown
       // 
-      this.toughnessNumericUpDown.DecimalPlaces = 1;
       this.toughnessNumericUpDown.Location = new System.Drawing.Point(162, 166);
-      this.toughnessNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.toughnessNumericUpDown.Name = "toughnessNumericUpDown";
       this.toughnessNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.toughnessNumericUpDown.TabIndex = 15;
@@ -383,13 +334,7 @@
       // 
       // evadeRatingNumericUpDown
       // 
-      this.evadeRatingNumericUpDown.DecimalPlaces = 1;
       this.evadeRatingNumericUpDown.Location = new System.Drawing.Point(162, 140);
-      this.evadeRatingNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
       this.evadeRatingNumericUpDown.Name = "evadeRatingNumericUpDown";
       this.evadeRatingNumericUpDown.Size = new System.Drawing.Size(90, 20);
       this.evadeRatingNumericUpDown.TabIndex = 13;

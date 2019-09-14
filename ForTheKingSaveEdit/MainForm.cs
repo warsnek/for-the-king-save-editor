@@ -146,52 +146,52 @@ namespace ForTheKingSaveEdit
 
     private void EvadeRatingNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedEvadeRating = Convert.ToSingle(evadeRatingNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedEvadeRating = Convert.ToInt32(evadeRatingNumericUpDown.Value);
     }
 
     private void ThoughnessNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedToughness = Convert.ToSingle(toughnessNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedToughness = Convert.ToInt32(toughnessNumericUpDown.Value);
     }
 
     private void AwarenessNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedAwareness = Convert.ToSingle(awarenessNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedAwareness = Convert.ToInt32(awarenessNumericUpDown.Value);
     }
 
     private void FortitudeNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedFortitude = Convert.ToSingle(fortitudeNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedFortitude = Convert.ToInt32(fortitudeNumericUpDown.Value);
     }
 
     private void QuicknessNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedQuickness = Convert.ToSingle(quicknessNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedQuickness = Convert.ToInt32(quicknessNumericUpDown.Value);
     }
 
     private void VitalityNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedVitality = Convert.ToSingle(vitalityNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedVitality = Convert.ToInt32(vitalityNumericUpDown.Value);
     }
 
     private void TalentNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedTalent = Convert.ToSingle(talentNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedTalent = Convert.ToInt32(talentNumericUpDown.Value);
     }
 
     private void LuckNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedLuck = Convert.ToSingle(luckNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedLuck = Convert.ToInt32(luckNumericUpDown.Value);
     }
 
     private void MaxFocusNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedMaxFocus = Convert.ToSingle(maxFocusNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedMaxFocus = Convert.ToInt32(maxFocusNumericUpDown.Value);
     }
 
     private void MaxHealthNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      GetActiveCharacterInfo().AugmentedMaxHealth = Convert.ToSingle(maxHealthNumericUpDown.Value);
+      GetActiveCharacterInfo().AugmentedMaxHealth = Convert.ToInt32(maxHealthNumericUpDown.Value);
     }
 
     private SaveGame GetActiveSaveGame()
