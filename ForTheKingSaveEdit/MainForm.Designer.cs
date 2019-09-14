@@ -68,6 +68,8 @@
       this.SaveButton = new System.Windows.Forms.Button();
       this.closeButton = new System.Windows.Forms.Button();
       this.unlockButton = new System.Windows.Forms.Button();
+      this.label17 = new System.Windows.Forms.Label();
+      this.saveGameComboBox = new System.Windows.Forms.ComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.loreNumericUpDown)).BeginInit();
       this.currentGameGroupBox.SuspendLayout();
       this.characterInfoPanel.SuspendLayout();
@@ -118,12 +120,12 @@
       this.currentGameGroupBox.Controls.Add(this.characterInfoPanel);
       this.currentGameGroupBox.Controls.Add(this.label1);
       this.currentGameGroupBox.Controls.Add(this.selectCharacterComboBox);
-      this.currentGameGroupBox.Location = new System.Drawing.Point(12, 50);
+      this.currentGameGroupBox.Location = new System.Drawing.Point(12, 78);
       this.currentGameGroupBox.Name = "currentGameGroupBox";
-      this.currentGameGroupBox.Size = new System.Drawing.Size(407, 469);
+      this.currentGameGroupBox.Size = new System.Drawing.Size(393, 475);
       this.currentGameGroupBox.TabIndex = 2;
       this.currentGameGroupBox.TabStop = false;
-      this.currentGameGroupBox.Text = "Current Game";
+      this.currentGameGroupBox.Text = "Save Game";
       // 
       // characterInfoPanel
       // 
@@ -164,7 +166,7 @@
       this.characterInfoPanel.Enabled = false;
       this.characterInfoPanel.Location = new System.Drawing.Point(19, 49);
       this.characterInfoPanel.Name = "characterInfoPanel";
-      this.characterInfoPanel.Size = new System.Drawing.Size(367, 397);
+      this.characterInfoPanel.Size = new System.Drawing.Size(353, 403);
       this.characterInfoPanel.TabIndex = 2;
       // 
       // maxHealthNumericUpDown
@@ -526,17 +528,18 @@
       this.selectCharacterComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.selectCharacterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.selectCharacterComboBox.Enabled = false;
       this.selectCharacterComboBox.FormattingEnabled = true;
       this.selectCharacterComboBox.Location = new System.Drawing.Point(101, 19);
       this.selectCharacterComboBox.Name = "selectCharacterComboBox";
-      this.selectCharacterComboBox.Size = new System.Drawing.Size(286, 21);
+      this.selectCharacterComboBox.Size = new System.Drawing.Size(272, 21);
       this.selectCharacterComboBox.TabIndex = 0;
       this.selectCharacterComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectCharacterComboBox_SelectedIndexChanged);
       // 
       // SaveButton
       // 
       this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.SaveButton.Location = new System.Drawing.Point(201, 525);
+      this.SaveButton.Location = new System.Drawing.Point(187, 559);
       this.SaveButton.Name = "SaveButton";
       this.SaveButton.Size = new System.Drawing.Size(95, 23);
       this.SaveButton.TabIndex = 3;
@@ -547,7 +550,7 @@
       // closeButton
       // 
       this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.closeButton.Location = new System.Drawing.Point(302, 525);
+      this.closeButton.Location = new System.Drawing.Point(288, 559);
       this.closeButton.Name = "closeButton";
       this.closeButton.Size = new System.Drawing.Size(117, 23);
       this.closeButton.TabIndex = 4;
@@ -565,13 +568,36 @@
       this.unlockButton.UseVisualStyleBackColor = true;
       this.unlockButton.Click += new System.EventHandler(this.UnlockButton_Click);
       // 
+      // label17
+      // 
+      this.label17.AutoSize = true;
+      this.label17.Location = new System.Drawing.Point(17, 54);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(99, 13);
+      this.label17.TabIndex = 4;
+      this.label17.Text = "Select Save Game:";
+      // 
+      // saveGameComboBox
+      // 
+      this.saveGameComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.saveGameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.saveGameComboBox.FormattingEnabled = true;
+      this.saveGameComboBox.Location = new System.Drawing.Point(113, 51);
+      this.saveGameComboBox.Name = "saveGameComboBox";
+      this.saveGameComboBox.Size = new System.Drawing.Size(272, 21);
+      this.saveGameComboBox.TabIndex = 3;
+      this.saveGameComboBox.SelectedIndexChanged += new System.EventHandler(this.SaveGameComboBox_SelectedIndexChanged);
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.Silver;
-      this.ClientSize = new System.Drawing.Size(431, 557);
+      this.ClientSize = new System.Drawing.Size(417, 591);
+      this.Controls.Add(this.label17);
       this.Controls.Add(this.unlockButton);
+      this.Controls.Add(this.saveGameComboBox);
       this.Controls.Add(this.closeButton);
       this.Controls.Add(this.SaveButton);
       this.Controls.Add(this.currentGameGroupBox);
@@ -646,6 +672,8 @@
     private System.Windows.Forms.Label label14;
     private System.Windows.Forms.Button closeButton;
     private System.Windows.Forms.Button unlockButton;
+    private System.Windows.Forms.Label label17;
+    private System.Windows.Forms.ComboBox saveGameComboBox;
   }
 }
 

@@ -7,13 +7,15 @@ namespace ForTheKingSaveEdit
 {
   public class SaveGame
   {
+    private readonly string _saveGameFilePath;
     private JObject _rawSaveGameData;
     private Dictionary<string, CharacterInfo> _characters = new Dictionary<string, CharacterInfo>();
 
     public IReadOnlyCollection<string> CharacterIds => _characters.Keys;
 
-    public SaveGame(JObject rawSaveGameData)
+    public SaveGame(string saveGameFilePath, JObject rawSaveGameData)
     {
+      _saveGameFilePath = saveGameFilePath;
       _rawSaveGameData = rawSaveGameData;
 
       var gameInfo = (JObject)rawSaveGameData["m_GameInfo"];
@@ -35,13 +37,13 @@ namespace ForTheKingSaveEdit
       return _characters[characterId];
     }
 
-    public static bool TryLoadSaveGame(string saveFilePath, out SaveGame saveGame)
+    public static bool TryLoadSaveGame(string saveGameFilePath, out SaveGame saveGame)
     {      
       try
       {
-        byte[] b = File.ReadAllBytes(saveFilePath);
+        byte[] b = File.ReadAllBytes(saveGameFilePath);
         string content = GZip.Decompress(b);
-        saveGame = new SaveGame(JObject.Parse(content));
+        saveGame = new SaveGame(saveGameFilePath, JObject.Parse(content));
         return true;
       }
       catch
@@ -51,7 +53,7 @@ namespace ForTheKingSaveEdit
       }
     }
 
-    public void Save(string saveFilePath)
+    public void Save()
     {
       foreach (var characterInfo in _characters.Values)
       {
@@ -59,7 +61,7 @@ namespace ForTheKingSaveEdit
       }
 
       string content = _rawSaveGameData.ToString(Formatting.None);
-      File.WriteAllBytes(saveFilePath, GZip.Compress(content));
+      File.WriteAllBytes(_saveGameFilePath, GZip.Compress(content));
     }
   }
 }

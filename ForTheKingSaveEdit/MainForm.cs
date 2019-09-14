@@ -10,13 +10,12 @@ namespace ForTheKingSaveEdit
   public partial class MainForm : Form
   {
     private string _saveDirectoryPath;
-    private string _saveGameFilePath;
     private long _originalLorePoints;
     private long _lorePoints;
-    private SaveGame _saveGame;
 
+    private Dictionary<string, SaveGame> _saveGames = new Dictionary<string, SaveGame>();
+    
     private Dictionary<string, long> _playerStatisticsToUpdate = new Dictionary<string, long>();
-    //private List<string> _achievementsToUnlock = new List<string>();
 
     public MainForm(string saveDirectoryPath)
     {
@@ -29,21 +28,15 @@ namespace ForTheKingSaveEdit
       loreNumericUpDown.Value = _lorePoints;
 
       // Load the .run file in the save directory (current gameinfo)
-      var runFilePath = Directory.EnumerateFiles(saveDirectoryPath, "*.run").FirstOrDefault();
-      if (runFilePath != null && SaveGame.TryLoadSaveGame(runFilePath, out SaveGame saveGame))
-      {
-        _saveGameFilePath = runFilePath;
-        _saveGame = saveGame;
 
-        foreach (var characterId in _saveGame.CharacterIds)
-        {
-          selectCharacterComboBox.Items.Add(characterId);
-        }
-      }
-      else
+      foreach(var runFilePath in Directory.EnumerateFiles(saveDirectoryPath, "*.run"))
       {
-        selectCharacterComboBox.Enabled = false;
-        selectCharacterComboBox.Items.Add("-no game in progress-");
+        if(SaveGame.TryLoadSaveGame(runFilePath, out SaveGame saveGame))
+        {
+          string runFileName = Path.GetFileName(runFilePath);
+          _saveGames.Add(runFileName, saveGame);
+          saveGameComboBox.Items.Add(runFileName);
+        }
       }
     }
 
@@ -84,10 +77,7 @@ namespace ForTheKingSaveEdit
           UpdatePlayerStatistic(playerDbCon, playerStatistic.Key, playerStatistic.Value);
         }
 
-        //foreach(var achievement in _achievementsToUnlock)
-        //{
-        //  UnlockAchievement(playerDbCon, achievement);
-        //}
+
 
         playerDbCon.Close();
       }
@@ -99,14 +89,6 @@ namespace ForTheKingSaveEdit
         command.Parameters.AddWithValue("@value", value);        
         command.ExecuteNonQuery();
       }
-
-      //void UnlockAchievement(SQLiteConnection connection, string achievementName)
-      //{
-      //  var command = new SQLiteCommand("UPDATE sPlayerAchievement SET IsAchieved = 1 WHERE Name = @name", connection);
-      //  command.Parameters.AddWithValue("@name", achievementName);
-      //  command.ExecuteNonQuery();
-      //}
-
     }
 
     private void SelectCharacterComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,6 +194,17 @@ namespace ForTheKingSaveEdit
       GetActiveCharacterInfo().AugmentedMaxHealth = Convert.ToSingle(maxHealthNumericUpDown.Value);
     }
 
+    private SaveGame GetActiveSaveGame()
+    {
+      var saveGameId = (string)saveGameComboBox.SelectedItem;
+      if (saveGameId == null)
+      {
+        return null;
+      }
+
+      return _saveGames[saveGameId];
+    }
+
     private CharacterInfo GetActiveCharacterInfo()
     {
       var characterId = (string)selectCharacterComboBox.SelectedItem;
@@ -220,7 +213,7 @@ namespace ForTheKingSaveEdit
         return null;
       }
 
-      return _saveGame.GetCharacterInfo(characterId);
+      return GetActiveSaveGame().GetCharacterInfo(characterId);
     }
 
     private void SaveButton_Click(object sender, EventArgs e)
@@ -232,11 +225,11 @@ namespace ForTheKingSaveEdit
           SaveToPlayerDb();
         }
 
-        if (_saveGame != null)
+        foreach(var saveGame in _saveGames.Values)
         {
-          _saveGame.Save(_saveGameFilePath);
-          MessageBox.Show("Saved succesfully!", "MAH QWEEN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          saveGame.Save();
         }
+        MessageBox.Show("Saved succesfully!", "MAH QWEEN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch (Exception ex)
       {
@@ -317,15 +310,6 @@ namespace ForTheKingSaveEdit
             }
           }
 
-          //var command = new SQLiteCommand("SELECT Name FROM sPlayerAchievement WHERE IsAchieved = 0", playerDbCon);
-          //using (var reader = command.ExecuteReader())
-          //{
-          //  while (reader.Read())
-          //  {
-          //    _achievementsToUnlock.Add(reader.GetString(0));
-          //  }
-          //}
-
           playerDbCon.Close();
         }
 
@@ -345,6 +329,17 @@ namespace ForTheKingSaveEdit
 
         return (long)command.ExecuteScalar();
       }
+    }
+
+    private void SaveGameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      var saveGame = GetActiveSaveGame();
+
+      foreach(var characterId in saveGame.CharacterIds)
+      {
+        selectCharacterComboBox.Items.Add(characterId);
+      }
+      selectCharacterComboBox.Enabled = true;
     }
   }
 }
