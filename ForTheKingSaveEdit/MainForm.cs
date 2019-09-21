@@ -9,7 +9,7 @@ namespace ForTheKingSaveEdit
 {
   public partial class MainForm : Form
   {
-    private string _saveDirectoryPath;
+    private string _playerDbFilePath;
     private long _originalLorePoints;
     private long _lorePoints;
 
@@ -17,11 +17,21 @@ namespace ForTheKingSaveEdit
     
     private Dictionary<string, long> _playerStatisticsToUpdate = new Dictionary<string, long>();
 
+    private string FindPlayerDbFilePath(string saveDirectoryPath)
+    {
+      return Directory.EnumerateFiles(saveDirectoryPath, "player.db", SearchOption.AllDirectories).FirstOrDefault();
+    }
+
     public MainForm(string saveDirectoryPath)
     {
       InitializeComponent();
 
-      _saveDirectoryPath = saveDirectoryPath;
+      _playerDbFilePath = FindPlayerDbFilePath(saveDirectoryPath);
+      if(_playerDbFilePath == null)
+      {
+        MessageBox.Show($"Unable to find the player.db file.", ":(", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        Environment.Exit(1);
+      }      
 
       _lorePoints = GetLorePointsFromDb();
       _originalLorePoints = _lorePoints;
@@ -29,7 +39,7 @@ namespace ForTheKingSaveEdit
 
       // Load the .run file in the save directory (current gameinfo)
 
-      foreach(var runFilePath in Directory.EnumerateFiles(saveDirectoryPath, "*.run"))
+      foreach(var runFilePath in Directory.EnumerateFiles(saveDirectoryPath, "*.run", SearchOption.AllDirectories))
       {
         if(SaveGame.TryLoadSaveGame(runFilePath, out SaveGame saveGame))
         {
@@ -42,8 +52,7 @@ namespace ForTheKingSaveEdit
 
     private SQLiteConnection CreatePlayerDbConnection()
     {
-      string dbFilePath = Path.Combine(_saveDirectoryPath, "player.db");
-      return new SQLiteConnection($"Data Source={dbFilePath}; Version=3;");
+      return new SQLiteConnection($"Data Source={_playerDbFilePath}; Version=3;");
     }
 
     private long GetLorePointsFromDb()
