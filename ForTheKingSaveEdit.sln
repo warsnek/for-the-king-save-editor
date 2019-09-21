@@ -7,16 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForTheKingSaveEdit", "ForTh
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
-		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDA5C290-8425-4F38-A167-F873B3177779}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{FDA5C290-8425-4F38-A167-F873B3177779}.Debug|x64.ActiveCfg = Debug|x64
 		{FDA5C290-8425-4F38-A167-F873B3177779}.Debug|x64.Build.0 = Debug|x64
-		{FDA5C290-8425-4F38-A167-F873B3177779}.Release|Any CPU.ActiveCfg = Release|x64
 		{FDA5C290-8425-4F38-A167-F873B3177779}.Release|x64.ActiveCfg = Release|x64
 		{FDA5C290-8425-4F38-A167-F873B3177779}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
