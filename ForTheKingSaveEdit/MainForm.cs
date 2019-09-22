@@ -344,8 +344,9 @@ namespace ForTheKingSaveEdit
     {
       var saveGame = GetActiveSaveGame();
 
+      selectCharacterComboBox.Items.Clear();
       foreach(var characterId in saveGame.CharacterIds)
-      {
+      {        
         selectCharacterComboBox.Items.Add(characterId);
       }
       selectCharacterComboBox.Enabled = true;
