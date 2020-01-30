@@ -10,7 +10,7 @@ Then unzip the file and run the "ForTheKingSaveEdit.exe" you should see an ugly 
 ![preview](https://github.com/warsnek/for-the-king-save-editor/blob/master/preview.png)
 1. Here you can edit the amount of lore point you have to buy stuff from the store and using the "Enable Lore Store Options" you can unlock most items in the lore store so you can buy them.
 2. Use this dropdown to select the savegame file that you want to edit.
-3. Once you have selected a savegame file (2) you can select the character in this downdown that you want to edit. You can edit the stats of the character in the nice blue section below.
+3. Once you have selected a savegame file (2) you can select the character in this dropdown that you want to edit. You can edit the stats of the character in the nice blue section below.
 4. When you are done click "Save and close" to save your changes or "Close without saving" to just exit from the editor.
 
 Enjoy!
