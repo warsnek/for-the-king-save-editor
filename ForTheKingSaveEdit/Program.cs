@@ -13,14 +13,13 @@ namespace ForTheKingSaveEdit
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main()
+    static void Main(params string[] args)
     {
-
       Application.ThreadException += Application_ThreadException;
 
       try
       {
-        var saveDirectoryPath = Path.Combine(FileUtility.GetLocalLowAppDataPath(), @"IronOak Games\FTK\save");
+        var saveDirectoryPath = args.Length == 1 ? args[0] : Path.Combine(FileUtility.GetLocalLowAppDataPath(), @"IronOak Games\FTK\save");
         if(Directory.Exists(saveDirectoryPath))
         {
           Application.EnableVisualStyles();
