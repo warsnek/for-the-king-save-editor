@@ -1,9 +1,9 @@
 # For The King - save game editor
 This tool allows you to edit your Lore points as well as the gold and stats of your characters in your games.
 
-Current release [1.1.5](https://github.com/warsnek/for-the-king-save-editor/releases/tag/1.1.5)
+Current release [1.1.6](https://github.com/warsnek/for-the-king-save-editor/releases/tag/1.1.6)
 
-The editor is pretty simple to use, to start using it first download the latest version from the releases page, or [click here](https://github.com/warsnek/for-the-king-save-editor/releases/download/1.1.5/ForTheKingSaveGameEditor.1.1.5.zip).
+The editor is pretty simple to use, to start using it first download the latest version from the releases page, or [click here](https://github.com/warsnek/for-the-king-save-editor/releases/download/1.1.6/ForTheKingSaveGameEditor.1.1.6.zip).
 
 Then unzip the file and run the "ForTheKingSaveEdit.exe" you should see an ugly screen :( like this:
 
