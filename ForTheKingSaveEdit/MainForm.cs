@@ -254,7 +254,13 @@ namespace ForTheKingSaveEdit
 
     private void LoreNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-      _lorePoints = Convert.ToInt64(loreNumericUpDown.Value);
+      var lorePoints = Convert.ToInt64(loreNumericUpDown.Value);
+      if(lorePoints > 5000)
+      {
+        lorePoints = 5000;
+      }
+
+      _lorePoints = lorePoints;
     }
 
     private void UnlockButton_Click(object sender, EventArgs e)

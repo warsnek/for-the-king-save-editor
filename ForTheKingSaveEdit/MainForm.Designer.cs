@@ -103,7 +103,7 @@
       // 
       this.loreNumericUpDown.Location = new System.Drawing.Point(78, 11);
       this.loreNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
