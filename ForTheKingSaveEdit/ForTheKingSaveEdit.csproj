@@ -86,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentsParser.cs" />
     <Compile Include="CharacterInfo.cs" />
     <Compile Include="FileUtility.cs" />
     <Compile Include="GZip.cs" />
