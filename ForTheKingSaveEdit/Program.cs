@@ -25,7 +25,7 @@ namespace ForTheKingSaveEdit
         var outputPath = parser.Get("output");
 
         // --unpack --input:"C:\Users\[username]\AppData\LocalLow\IronOak Games\FTK\save\story_2019_9_7_0.run" --output:"C:\Temp\rawsave.json"
-        // --pack --input:"C:\Temp\rawsave.json" --output:"C:\Users\[username]\AppData\LocalLow\IronOak Games\FTK\save\story_2019_9_7_1.run" 
+        // --pack --input:"C:\Temp\rawsave.json" --output:"C:\Users\[username]\AppData\LocalLow\IronOak Games\FTK\save\story_2019_9_7_0.run" 
         if(parser.ContainsArgument("unpack"))
         {
           byte[] b = File.ReadAllBytes(inputPath);
