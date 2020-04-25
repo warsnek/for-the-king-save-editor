@@ -313,7 +313,15 @@ namespace ForTheKingSaveEdit
         { "STAT_NIGHT_MARKET_PURCHASES", 1 },
         { "STAT_CELLAR_LEVEL_DEPTH", 8 },
         { "STAT_SHIPWRECKS", 1 },
-        { "STAT_BEATCULTISTCAMP", 1 }
+        { "STAT_BEATCULTISTCAMP", 1 },
+        { "STAT_LU_HELMETSANTA", 1 },
+        { "STAT_LU_BACKPACKSANTA", 1 },
+        { "STAT_LU_SKINFISH", 1 },
+        { "STAT_LU_HELMETNEWYEAR", 1 },
+        { "STAT_LU_BACKPACKVALENTINE", 1 },
+        { "STAT_LU_HELMETSTPATRICK", 1 },
+        { "STAT_LU_ARMORSTPATRICK", 1 },
+        { "STAT_LU_HELMETEASTER", 1 },
       };
 
       try
