@@ -322,6 +322,8 @@ namespace ForTheKingSaveEdit
         { "STAT_LU_HELMETSTPATRICK", 1 },
         { "STAT_LU_ARMORSTPATRICK", 1 },
         { "STAT_LU_HELMETEASTER", 1 },
+        { "STAT_LU_ITEMGOLDENGUN", 1 },
+        { "STAT_LU_ITEMBONEHARPOON", 1 }
       };
 
       try
