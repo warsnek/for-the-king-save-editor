@@ -94,8 +94,10 @@ namespace ForTheKingSaveEdit
       {
         playerDbCon.Open();
 
-        var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = 'STAT_LU_TOTAL_LORE'", playerDbCon);
-        result = (long)command.ExecuteScalar();
+        using (var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = 'STAT_LU_TOTAL_LORE'", playerDbCon))
+        {
+          result = (long)command.ExecuteScalar();
+        }
 
         playerDbCon.Close();
       }
@@ -118,17 +120,17 @@ namespace ForTheKingSaveEdit
           UpdatePlayerStatistic(playerDbCon, playerStatistic.Key, playerStatistic.Value);
         }
 
-
-
         playerDbCon.Close();
       }
 
       void UpdatePlayerStatistic(SQLiteConnection connection, string name, long value)
       {
-        var command = new SQLiteCommand("UPDATE sPlayerStatistic SET Value = @value WHERE Name = @name", connection);
-        command.Parameters.AddWithValue("@name", name);
-        command.Parameters.AddWithValue("@value", value);        
-        command.ExecuteNonQuery();
+        using (var command = new SQLiteCommand("UPDATE sPlayerStatistic SET Value = @value WHERE Name = @name", connection))
+        {
+          command.Parameters.AddWithValue("@name", name);
+          command.Parameters.AddWithValue("@value", value);
+          command.ExecuteNonQuery();
+        }
       }
     }
 
@@ -397,14 +399,18 @@ namespace ForTheKingSaveEdit
 
       long? GetValue(SQLiteConnection connection, string name)
       {
-        var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = @name", connection);
-        command.Parameters.AddWithValue("@name", name);
-
-        var reader = command.ExecuteReader();
-        if(reader.HasRows)
+        using (var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = @name", connection))
         {
-          reader.Read();
-          return reader.GetInt64(0);
+          command.Parameters.AddWithValue("@name", name);
+
+          using (var reader = command.ExecuteReader())
+          {
+            if (reader.HasRows)
+            {
+              reader.Read();
+              return reader.GetInt64(0);
+            }
+          }
         }
 
         return null;
