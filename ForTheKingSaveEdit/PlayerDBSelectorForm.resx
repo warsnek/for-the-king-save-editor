@@ -120,7 +120,7 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Multiple lore files found in the save game directory, please select the lore file which the editor should use.
 This is the file that contains the lore points and the lore store unlocks, if you don't see changes in the game after using the save game editor you probably chose the wrong lore file,
-in that case just try again but  choose one of the other options :)</value>
+in that case just try again but choose one of the other options :)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
