@@ -310,8 +310,8 @@ namespace ForTheKingSaveEdit
         { "STAT_SANCTUM09_DEVOTED", 8 },
         { "STAT_LU_STONE_HERO_TRIBUTES", 50 },
         { "STAT_PARTY_WIPES", 3 },
-        { "STAT_NIGHT_MARKET_PURCHASES", 1 },
-        { "STAT_CELLAR_LEVEL_DEPTH", 8 },
+        { "STAT_NIGHT_MARKET_PURCHASES", 10 },
+        { "STAT_CELLAR_LEVEL_DEPTH", 9 },
         { "STAT_SHIPWRECKS", 1 },
         { "STAT_BEATCULTISTCAMP", 1 },
         { "STAT_LU_HELMETSANTA", 1 },
@@ -323,7 +323,23 @@ namespace ForTheKingSaveEdit
         { "STAT_LU_ARMORSTPATRICK", 1 },
         { "STAT_LU_HELMETEASTER", 1 },
         { "STAT_LU_ITEMGOLDENGUN", 1 },
-        { "STAT_LU_ITEMBONEHARPOON", 1 }
+        { "STAT_LU_ITEMBONEHARPOON", 1 },
+        { "STAT_LU_GLADIATOR_REVEAL", 1 },
+        { "STAT_LU_ASTRONOMER_REVEAL", 1 },
+        { "STAT_LU_ARMORMONKEY", 1 },
+        { "STAT_LU_BACKPACKAZTEC", 1 },
+        { "STAT_LU_BACKPACKBOBBLE_REVEAL", 1 },
+        { "STAT_LU_BACKPACKSCROLLS", 1 },
+        { "STAT_LU_HELMETMONKEY", 1 },
+        { "STAT_LU_ITEMWANDLOLLI", 1 },
+        { "STAT_LU_ITEMSTARFIRE", 1 },
+        { "STAT_LU_AMULETIMMUNITY", 1 },
+        { "STAT_LU_LOCALARENA_REVEAL", 1 },
+        { "STAT_LU_BACKERSDLC", 1 },
+        { "STAT_LU_BACKERSPLUSDLC", 1 },
+        { "STAT_KILLED_SKELETONS", 150 },
+        { "STAT_TREASURE_CHESTS_OPENED", 5 },
+     
       };
 
       try
