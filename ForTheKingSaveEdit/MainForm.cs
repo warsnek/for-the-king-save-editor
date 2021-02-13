@@ -19,7 +19,19 @@ namespace ForTheKingSaveEdit
 
     private string FindPlayerDbFilePath(string saveDirectoryPath)
     {
-      return Directory.EnumerateFiles(saveDirectoryPath, "player.db", SearchOption.AllDirectories).FirstOrDefault();
+      var playerDbFiles = Directory.EnumerateFiles(saveDirectoryPath, "player.db", SearchOption.AllDirectories).OrderBy(p => p.Length).ToArray();
+      if(playerDbFiles.Length == 0)
+      {
+        return null;
+      }
+      else if(playerDbFiles.Length == 1)
+      {
+        return playerDbFiles[0];
+      }
+
+      var selectionForm = new PlayerDBSelectorForm(playerDbFiles);
+      selectionForm.ShowDialog();
+      return selectionForm.SelectedFile;
     }
 
     public MainForm(string saveDirectoryPath)
@@ -49,9 +61,24 @@ namespace ForTheKingSaveEdit
         if(SaveGame.TryLoadSaveGame(runFilePath, out SaveGame saveGame))
         {
           string runFileName = Path.GetFileName(runFilePath);
-          _saveGames.Add(runFileName, saveGame);
-          saveGameComboBox.Items.Add(runFileName);
+
+          var label = GetSaveFileLabel(runFileName);
+          _saveGames.Add(label, saveGame);
+          saveGameComboBox.Items.Add(label);
         }
+      }
+      
+      string GetSaveFileLabel(string runFileName)
+      {
+        string label = runFileName;
+        int i = 2;
+        while(_saveGames.ContainsKey(label))
+        {
+          label = $"{runFileName} ({i})";
+          i++;
+        }
+
+        return label;
       }
     }
 
@@ -338,8 +365,7 @@ namespace ForTheKingSaveEdit
         { "STAT_LU_BACKERSDLC", 1 },
         { "STAT_LU_BACKERSPLUSDLC", 1 },
         { "STAT_KILLED_SKELETONS", 150 },
-        { "STAT_TREASURE_CHESTS_OPENED", 5 },
-     
+        { "STAT_TREASURE_CHESTS_OPENED", 5 }
       };
 
       try
@@ -350,7 +376,8 @@ namespace ForTheKingSaveEdit
 
           foreach (var unlockOption in unlockOptions)
           {
-            if (GetValue(playerDbCon, unlockOption.Key) < unlockOption.Value)
+            var value = GetValue(playerDbCon, unlockOption.Key);
+            if(value != null && value < unlockOption.Value)
             {
               _playerStatisticsToUpdate[unlockOption.Key] = unlockOption.Value;
             }
@@ -368,12 +395,19 @@ namespace ForTheKingSaveEdit
       }
 
 
-      long GetValue(SQLiteConnection connection, string name)
+      long? GetValue(SQLiteConnection connection, string name)
       {
         var command = new SQLiteCommand("SELECT VALUE FROM sPlayerStatistic WHERE Name = @name", connection);
         command.Parameters.AddWithValue("@name", name);
 
-        return (long)command.ExecuteScalar();
+        var reader = command.ExecuteReader();
+        if(reader.HasRows)
+        {
+          reader.Read();
+          return reader.GetInt64(0);
+        }
+
+        return null;
       }
     }
 
