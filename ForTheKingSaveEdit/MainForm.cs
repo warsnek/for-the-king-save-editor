@@ -48,10 +48,9 @@ namespace ForTheKingSaveEdit
       _lorePoints = GetLorePointsFromDb();
       _originalLorePoints = _lorePoints;
 
-      if(_lorePoints > 5000)
-      {
-        _lorePoints = 5000;
-      }
+      if(_lorePoints > 5000) { _lorePoints = 5000; }
+      if(_lorePoints < 0) { _lorePoints = 0; }
+
       loreNumericUpDown.Value = _lorePoints;
 
       // Load the .run file in the save directory (current gameinfo)
