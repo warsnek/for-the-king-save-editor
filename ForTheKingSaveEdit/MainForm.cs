@@ -367,8 +367,8 @@ namespace ForTheKingSaveEdit
         { "STAT_NUM_TIMES_DISEASED", 1 }, // Immunity Amulet unlock condition and Disease Healer (location) unlock condition
         //{ "STAT_LU_AMULETIMMUNITY", 1 }, // Immunity Amulet unlock
         { "STAT_LU_LOCALARENA_REVEAL", 1 },
-        { "STAT_LU_BACKERSDLC", 1 },
-        { "STAT_LU_BACKERSPLUSDLC", 1 },
+        //{ "STAT_LU_BACKERSDLC", 1 },
+        //{ "STAT_LU_BACKERSPLUSDLC", 1 },
         { "STAT_KILLED_SKELETONS", 150 },
         { "STAT_TREASURE_CHESTS_OPENED", 5 },
         { "STAT_LU_QUEENSGUARDREVEAL", 1}, // Queens Guard set unlock condition
