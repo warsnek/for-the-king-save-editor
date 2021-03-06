@@ -350,26 +350,35 @@ namespace ForTheKingSaveEdit
         { "STAT_LU_HELMETSTPATRICK", 1 },
         { "STAT_LU_ARMORSTPATRICK", 1 },
         { "STAT_LU_HELMETEASTER", 1 },
-        { "STAT_LU_ITEMGOLDENGUN", 1 },
-        { "STAT_LU_ITEMBONEHARPOON", 1 },
+        { "STAT_TREASURE_BOATS_DEFEATED", 1 }, // Golden Gun unlock condition
+        // { "STAT_LU_ITEMGOLDENGUN", 1 }, // Golden Gun unlock
+        { "STAT_KILLED_FISH", 15 }, // Bone Harpoon unlock condition
+        //{ "STAT_LU_ITEMBONEHARPOON", 1 }, // Bone Harpoon unlock
         { "STAT_LU_GLADIATOR_REVEAL", 1 },
         { "STAT_LU_ASTRONOMER_REVEAL", 1 },
-        { "STAT_LU_ARMORMONKEY", 1 },
-        { "STAT_LU_BACKPACKAZTEC", 1 },
-        { "STAT_LU_BACKPACKBOBBLE_REVEAL", 1 },
-        { "STAT_LU_BACKPACKSCROLLS", 1 },
+        { "STAT_LU_ARMORMONKEY", 1 },        
+        { "STAT_LU_BACKPACKBOBBLE_REVEAL", 1 },        
         { "STAT_LU_HELMETMONKEY", 1 },
-        { "STAT_LU_ITEMWANDLOLLI", 1 },
-        { "STAT_LU_ITEMSTARFIRE", 1 },
-        { "STAT_LU_AMULETIMMUNITY", 1 },
+        { "STAT_USED_CANDIES", 50 }, // Lolli wand unlock condition
+        //{ "STAT_LU_ITEMWANDLOLLI", 1 }, // Lolli wand unlock
+        { "STAT_AMBUSHSUCCESSES", 10 }, // Sais unlock condition
+        { "STAT_USEDORBGROUPSHIELDS", 5 }, // Starfire wand unlock condition
+        //{ "STAT_LU_ITEMSTARFIRE", 1 }, // Starfire wand unlock
+        { "STAT_NUM_TIMES_DISEASED", 1 }, // Immunity Amulet unlock condition and Disease Healer (location) unlock condition
+        //{ "STAT_LU_AMULETIMMUNITY", 1 }, // Immunity Amulet unlock
         { "STAT_LU_LOCALARENA_REVEAL", 1 },
         { "STAT_LU_BACKERSDLC", 1 },
         { "STAT_LU_BACKERSPLUSDLC", 1 },
         { "STAT_KILLED_SKELETONS", 150 },
         { "STAT_TREASURE_CHESTS_OPENED", 5 },
-        { "STAT_LU_ARMORQUEENSGUARD", 1},
-        { "STAT_LU_HELMETQUEENSGUARD", 1},
-        { "STAT_LU_QUEENSGUARDREVEAL", 1}
+        { "STAT_LU_QUEENSGUARDREVEAL", 1}, // Queens Guard set unlock condition
+        //{ "STAT_LU_ARMORQUEENSGUARD", 1}, // Queens Guard Armor unlock
+        //{ "STAT_LU_HELMETQUEENSGUARD", 1} // Queens Guard Helmet unlock    
+        { "STAT_LU_LORESTORESTORE_REVEAL", 1 }, // Lore Store Store condition
+        { "STAT_KILLED_WARRIORS", 50 }, // Feathered banner unlock condition
+        //{ "STAT_LU_BACKPACKAZTEC", 1 }, // Feathered banner unlock
+        { "STAT_USED_SCROLLS", 50 }, // Scroll pack unlock condition
+        //{ "STAT_LU_BACKPACKSCROLLS", 1 }, // Scroll pack unlock
       };
 
       try
