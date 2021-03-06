@@ -366,7 +366,10 @@ namespace ForTheKingSaveEdit
         { "STAT_LU_BACKERSDLC", 1 },
         { "STAT_LU_BACKERSPLUSDLC", 1 },
         { "STAT_KILLED_SKELETONS", 150 },
-        { "STAT_TREASURE_CHESTS_OPENED", 5 }
+        { "STAT_TREASURE_CHESTS_OPENED", 5 },
+        { "STAT_LU_ARMORQUEENSGUARD", 1},
+        { "STAT_LU_HELMETQUEENSGUARD", 1},
+        { "STAT_LU_QUEENSGUARDREVEAL", 1}
       };
 
       try
