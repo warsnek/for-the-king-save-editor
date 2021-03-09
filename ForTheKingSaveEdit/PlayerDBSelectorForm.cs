@@ -21,5 +21,10 @@ namespace ForTheKingSaveEdit
       SelectedFile = (string)selectLoreFileComboBox.SelectedItem;
       Close();
     }
+
+    private void selectLoreFileComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

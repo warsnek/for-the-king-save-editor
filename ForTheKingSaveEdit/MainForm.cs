@@ -439,5 +439,30 @@ namespace ForTheKingSaveEdit
       }
       selectCharacterComboBox.Enabled = true;
     }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+          throw new System.NotImplementedException();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+          throw new System.NotImplementedException();
+        }
+
+        private void maxHealthLabel_Click(object sender, EventArgs e)
+        {
+          throw new System.NotImplementedException();
+        }
+
+        private void loreLabel_Click(object sender, EventArgs e)
+        {
+          throw new System.NotImplementedException();
+        }
   }
 }
